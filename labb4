@@ -1,0 +1,148 @@
+#include <iostream>
+#include <vector>
+
+// ADD any needed functions here
+
+bool primecheck(int c);
+int nextprime(int j);
+int prevprime(int i);
+
+
+int main() {
+    
+    constexpr int exit = 5;
+    int N = 0;
+    
+    //add variables for functions
+
+    int option = exit;
+
+    do {
+        // Display the menu
+        std::cout << "1. Test prime \n2. Next prime \n3. Previous prime \n4. Display primes \n5. Exit \n\n";
+        
+        // Read user option
+        std::cin >> option;
+        
+        if (option < 1 || option > 5) {
+            std::cout << "invalid option, input an integer from 1 to 5\n";
+
+        }
+
+       // Handle user option -- switch-statement can be useful here
+
+       switch (option) {
+
+       case 1:
+          
+           std::cout << "\nInput a number which you want to check if it's a prime: ";
+           std::cin >> N;
+           primecheck(N);
+           if (primecheck(N)) {
+               std::cout << N << " is a prime number\n\n";
+
+           }
+           else {
+               std::cout << N << " is not a prime number\n\n";
+           }
+           break;
+
+       case 2:
+           
+           std::cout << "\nInput a number which you want to check the next prime number: ";
+           std::cin >> N;
+           std::cout << "Next prime number is: " << nextprime(N) << std::endl;
+           break;
+
+       case 3:
+           std::cout << "\nInput a number which you want to check the previous prime number: " << std::endl;
+           std::cin >> N;
+           std::cout << "Previous prime number is: " << prevprime(N) << std::endl;
+           break;
+
+       case 4:
+           
+
+           break;
+
+       }
+
+    } while (option != exit);
+
+}
+
+//function 1
+bool primecheck(int c) {
+    bool isPrime = true; 
+
+    //input of a number from user
+   
+    
+    if (c < 2) {
+        isPrime = false;
+
+    }
+    else if (c == 2) {
+       ;
+
+    }
+    else if (c > 2) {
+
+        //loop for increasing the divider 1 at a time until it c, so checks every number until c
+        for (int d = 2; d < c/2; d++) {
+
+            if (c % d == 0) {
+
+                isPrime = false;
+                break;
+
+            }
+        }
+    }
+
+    return isPrime; 
+}
+
+//function 2
+int nextprime(int j) {
+
+    //input of a number from user
+
+    if (primecheck(j)) {
+        
+        ;
+    }
+    else {
+
+        while (!primecheck(j)) {
+            j += 1; 
+            primecheck(j);
+
+        }
+    }
+    return j;
+}
+
+//function 3
+int prevprime(int i) {
+
+    //input of a number from user
+
+    if (primecheck(i)) {
+
+        ;
+    }
+    else {
+
+        while (!primecheck(i)) {
+            i -= 1;
+            primecheck(i);
+
+        }
+    }
+    return i;
+}
+
+//function 4
+
+
